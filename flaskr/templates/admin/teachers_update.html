@@ -1,0 +1,28 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+
+<a href="{{  url_for('admin.teachers')}}">
+    Назад
+</a>
+
+<div style="height: 250px; width: 400px; border-color: black;">
+
+
+
+    <form method="POST"> 
+        <p>
+            Редактирование информации об учителе
+        </p>
+        
+    
+        <input type="text" name="first_name" required placeholder="Имя" value="{{teacher['FIRST_NAME']}}">
+        <input type="text" name="second_name" required placeholder="Фамилия" value="{{teacher['SECOND_NAME']}}">
+        <input type="text" name="father_name" required placeholder="Отчество" value="{{teacher['FATHER_NAME']}}">
+    <input id="submit" type="submit" value="Подтвердить">
+    
+    </form>
+    </div>
+
+{% endblock %}

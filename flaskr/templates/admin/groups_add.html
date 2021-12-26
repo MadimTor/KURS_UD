@@ -1,0 +1,43 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+
+<a href="{{  url_for('admin.groups')}}">
+    Назад
+</a>
+
+<div style="height: 250px; width: 400px; border-color: black;">
+
+
+
+    <form method="POST"> 
+        <p>
+            Добавление группы
+        </p>
+        
+    
+    <input type="date" name="date" required placeholder="Номер">
+    
+    <select name="clid">
+        <option value=""> Нет класса</option>
+        {% for cl in cls %}
+        <option value="{{cl['ID']}}">
+            {{cl['NUMBER']}}{{cl['LITERA']}}
+        </option>
+        {% endfor %}
+    </select>
+
+    
+    <input id="submit" type="submit" value="Подтвердить">
+
+    
+    </form>
+    </div>
+
+
+
+
+
+
+{% endblock %}

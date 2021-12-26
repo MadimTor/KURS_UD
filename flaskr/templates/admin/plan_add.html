@@ -1,0 +1,51 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+
+<a href="{{  url_for('admin.plan')}}">
+    Назад
+</a>
+
+<div style="height: 250px; width: 400px; border-color: black;">
+
+
+
+    <form method="POST"> 
+        <p>
+            Добавление элемента плана
+        </p>
+        
+
+    <select name="teacher" required>
+        {% for teacher in teachers %}
+        <option value="{{teacher['ID']}}">
+            {{teacher['FIRST_NAME']}} {{teacher['SECOND_NAME']}} {{teacher['FATHER_NAME']}}
+        </option>
+        {% endfor %}
+    </select>
+
+    <select name="subject" required>
+        {% for sub in subj %}
+        <option value="{{sub['ID']}}">
+            {{sub['NAME']}}
+        </option>
+        {% endfor %}
+    </select>
+
+    <select name="cls" required>
+        {% for cl in cls %}
+        <option value="{{cl['ID']}}">
+            {{cl['NUMBER']}}{{cl['LITERA']}}
+        </option>
+        {% endfor %}
+    </select>
+
+    
+    <input id="submit" type="submit" value="Подтвердить">
+
+    
+    </form>
+    </div>
+
+{% endblock %}

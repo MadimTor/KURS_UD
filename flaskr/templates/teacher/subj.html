@@ -1,0 +1,115 @@
+{% extends 'teacher_base.html' %}
+
+{% block content %}
+<div style="margin: 20px;">
+<div style="display:inline-flexbox;">
+    <h1>
+        {{sub['NAME']}}
+    </h1>
+    <a href="{{url_for('teacher.subs')}}" style="align-self: flex-end; font-size: 20px; color: black; text-decoration: none;">
+        Назад
+    </a>
+</div>
+
+
+
+<div style="display: flex;">
+
+<div class="big-table" style="margin: 0%;">
+
+<table style="position: fixed;">
+    <td style="height: 18px; background-color: #F8FFEA;"></td>
+    {% for items in students %}
+    <tr>
+        
+        <td style="background-color: #F8FFEA;">{{items['FIRST_NAME']}} {{items['SECOND_NAME']}}</td>
+         
+     </tr>
+    {% endfor %}
+
+
+</table>
+
+
+
+<table>
+
+
+<tr>
+    <td></td>
+    {% for i in datas %}
+    <td>{{i.strftime("%d.%m")}}</td>
+    {% endfor %}
+</tr>
+
+
+
+{% for student in students %}
+<tr>
+    
+    <td>{{student['FIRST_NAME']}} {{student['SECOND_NAME']}}</td>
+    {% for data in datas %}
+
+    {% set ch = namespace(check = 1) %}
+    
+
+        {% for mark in marks %}
+            {% if mark['ST_ID'] == student['ST_ID'] and mark['DATE_MARK'].day == data.day and mark['DATE_MARK'].month == data.month and mark['DATE_MARK'].year == data.year %}
+                
+                <td>
+                    {% if mark['MARK'] == 5 %}
+                    {% set ch.check = 0 %}
+                    <a style="color: black; text-decoration: none;" href="{{ url_for('teacher.edit', plan_id = sub['ID'], student_id = student['ST_ID'], mark_id =  mark['ID']) }}">5</a>
+                    {% elif mark['MARK'] == 4 %}
+                    {% set ch.check = 0 %}
+                    <a style="color: black; text-decoration: none;" href="{{ url_for('teacher.edit', plan_id = sub['ID'], student_id = student['ST_ID'], mark_id =  mark['ID']  ) }}">4</a>
+                    {% elif mark['MARK'] == 3 %}
+                    {% set ch.check = 0 %}
+                    <a style="color: black; text-decoration: none;" href="{{ url_for('teacher.edit', plan_id = sub['ID'], student_id = student['ST_ID'], mark_id =  mark['ID']  ) }}">3</a>
+                    {% elif mark['MARK'] == 2 %}
+                    {% set ch.check = 0 %}
+                    <a style="color: black; text-decoration: none;" href="{{ url_for('teacher.edit', plan_id = sub['ID'], student_id = student['ST_ID'],  mark_id =  mark['ID']  ) }}">2</a>
+                    {% elif mark['MARK'] == -1 %}
+                    {% set ch.check = 0 %}
+                    <a style="color: black; text-decoration: none;" href="{{ url_for('teacher.edit', plan_id = sub['ID'], student_id = student['ST_ID'],  mark_id =  mark['ID']  ) }}">Н</a>
+                    {% elif mark['MARK'] == -2 %}
+                    {% set ch.check = 0 %}
+                    <a style="color: black; text-decoration: none;" href="{{ url_for('teacher.edit', plan_id = sub['ID'], student_id = student['ST_ID'],  mark_id =  mark['ID']   ) }}">П</a>
+                    {% endif %}
+
+                </td>
+                
+
+            {% endif %}
+        
+        {% endfor %}
+        {% if ch.check == 1 %}
+            <td>
+                {% set temp = [data, student['ST_ID'], sub['ID']] %}
+                
+                <a href="{{ url_for('teacher.create', date = data, plan_id = sub['ID'], student_id = student['ST_ID'], mark_type = 0  ) }}" style="color: #F8FFEA;">
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                </a>
+            </td>
+
+        {% endif %}
+    {% endfor %}
+
+
+
+
+
+ </tr>
+{% endfor %}
+
+
+</table>
+
+</div>
+
+</div>
+
+
+
+</div>
+{% endblock %}

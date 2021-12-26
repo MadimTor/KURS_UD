@@ -1,0 +1,69 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+
+<a href="{{  url_for('admin.plan')}}">
+    Назад
+</a>
+
+<div style="height: 250px; width: 400px; border-color: black;">
+
+
+
+    <form method="POST"> 
+        <p>
+            Редактирование элемента плана
+        </p>
+        
+
+    <select name="teacher" required>
+        {% for teacher in teachers %}
+        {% if plan['TEACHER_ID'] == teacher['ID'] %}
+        <option value="{{teacher['ID']}}" selected>
+            {{teacher['FIRST_NAME']}} {{teacher['SECOND_NAME']}} {{teacher['FATHER_NAME']}}
+        </option>
+        {%else%}
+        <option value="{{teacher['ID']}}">
+            {{teacher['FIRST_NAME']}} {{teacher['SECOND_NAME']}} {{teacher['FATHER_NAME']}}
+        </option>
+        {%endif%}
+        {% endfor %}
+    </select>
+
+    <select name="subject" required>
+        {% for sub in subj %}
+        {% if plan['SUBJECT_ID'] == sub['ID'] %}
+        <option value="{{sub['ID']}}" selected>
+            {{sub['NAME']}}
+        </option>
+        {%else%}
+        <option value="{{sub['ID']}}">
+            {{sub['NAME']}}
+        </option>
+        {%endif%}
+        {% endfor %}
+    </select>
+
+    <select name="cls" required>
+        {% for cl in cls %}
+        {% if plan['CLASS_ID'] == cl['ID'] %}
+        <option value="{{cl['ID']}}" selected>
+            {{cl['NUMBER']}}{{cl['LITERA']}}
+        </option>
+        {%else%}
+        <option value="{{cl['ID']}}">
+            {{cl['NUMBER']}}{{cl['LITERA']}}
+        </option>
+        {%endif%}
+        {% endfor %}
+    </select>
+
+    
+    <input id="submit" type="submit" value="Подтвердить">
+
+    
+    </form>
+    </div>
+
+{% endblock %}

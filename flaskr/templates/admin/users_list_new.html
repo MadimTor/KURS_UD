@@ -1,0 +1,65 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+<a href="{{  url_for('admin.users')}}">
+    Назад
+</a>
+
+
+<div>
+    <h1>
+        Новые пользователи
+    </h1>
+    <h1 style="color: brown;">
+        ВНИМАНИЕ! ДАННАЯ СТРАНИЦА ОТОБРАЖАЕТСЯ ОДИН РАЗ. 
+    </h1>
+    <table>
+    <tr>
+        <td>
+            Имя
+        </td>
+    
+        <td>
+            Фамилия
+        </td>
+        <td>
+            Отчество
+        </td>
+        <td>
+            Username
+        </td>
+        <td>
+            Пароль
+        </td>
+
+        </td>
+
+    
+    </tr>
+    {% for usr in new_user %}
+    <tr>
+        <td>
+            {{usr[0]}}
+        </td>
+        <td>
+            {{usr[1]}}
+        </td>
+        
+        <td>
+            {{usr[2]}}
+        </td>
+        <td>
+            {{usr[3]}}
+        </td>
+        <td>
+            {{usr[4]}}
+        </td>
+        <td>
+            {{usr[5]}}
+        </td>
+    </tr>
+    {%  endfor  %}
+    </table>
+</div>
+{% endblock %}

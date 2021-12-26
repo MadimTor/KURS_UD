@@ -1,0 +1,26 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+
+<a href="{{  url_for('admin.subjects')}}">
+    Назад
+</a>
+
+<div style="height: 250px; width: 400px; border-color: black;">
+
+
+
+    <form method="POST"> 
+        <p>
+            Редактирование предмета
+        </p>
+        
+    
+    <input type="text" name="name_sub" required placeholder="Название" value="{{sub['NAME']}}">
+    <input id="submit" type="submit" value="Подтвердить">
+    
+    </form>
+    </div>
+
+{% endblock %}

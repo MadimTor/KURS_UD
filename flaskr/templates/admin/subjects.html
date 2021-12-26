@@ -1,0 +1,42 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+<h1>
+    <a href="{{ url_for('admin.create_sub')}}">
+        Добавить
+    </a>
+    
+</h1>
+<a href="{{  url_for('admin.main')}}">
+    Назад
+</a>
+<table>
+<tr>
+    <td>
+        Название
+    </td>
+    <td colspan="2">
+        Действия
+    </td>
+
+</tr>
+{%  for sub in subs  %}
+<tr>
+    <td>
+        {{sub['NAME']}}
+    </td>
+    <td>
+        <a href="{{url_for('admin.update_sub', id = sub['ID'])}}">
+            Редактировать
+        </a>
+    </td>
+    <td>
+        <a href="{{url_for('admin.delete_sub', id = sub['ID'])}}">
+            Удалить
+        </a>
+    </td>
+</tr>
+{%  endfor  %}
+</table>
+
+{% endblock %}

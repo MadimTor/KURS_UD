@@ -1,0 +1,40 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+
+<a href="{{  url_for('admin.users')}}">
+    Назад
+</a>
+
+<div style="height: 250px; width: 400px; border-color: black;">
+
+
+
+    <form method="POST"> 
+        <p>
+            Добавление пользователя
+        </p>
+        
+    
+    <select name="usr_id" required>
+        {% for usr in not_usr %}
+        <option value="{{usr['ID']}}">
+            {{usr['FIRST_NAME']}} {{usr['SECOND_NAME']}} {{usr['FATHER_NAME']}}
+        </option>
+        {% endfor %}
+    </select>
+
+    
+    <input id="submit" type="submit" value="Подтвердить">
+
+    
+    </form>
+    </div>
+
+
+
+
+
+
+{% endblock %}

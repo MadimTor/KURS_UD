@@ -1,0 +1,75 @@
+{% extends 'teacher_base.html' %}
+
+{% block content %}
+
+
+<div style="margin: 20px;"> 
+<a href="{{  url_for('teacher.subj', id = sub['ID'])}}">
+    Назад
+</a>
+<div style="height: 250px; width: 400px; border-color: black;">
+
+
+
+    <form method="POST"> 
+        <p>
+            Предмет: {{sub['NAME']}}
+        </p>
+        <p>
+            Ученик: {{student['FIRST_NAME']}} {{student['SECOND_NAME']}}
+        </p>
+        <p>
+            Дата: {{mark['DATE_MARK'].date()}}
+        </p>
+
+    <div>
+    <p>5</label>
+    {%  if mark['MARK'] == 5  %}
+    <input type="radio" name="mark" value="5" checked>
+    {%  else %}
+    <input type="radio" name="mark" value="5">
+    {% endif %}
+    <p>4</label>
+    {%  if mark['MARK'] == 4  %}
+    <input type="radio" name="mark" value="4" checked>
+    {%  else %}
+    <input type="radio" name="mark" value="4">
+    {% endif %}
+    <p>3</label>
+    {%  if mark['MARK'] == 3  %}
+    <input type="radio" name="mark" value="3" checked>
+    {%  else %}
+    <input type="radio" name="mark" value="3">
+    {% endif %}
+    <p>2</label>
+    {%  if mark['MARK'] == 2  %}
+    <input type="radio" name="mark" value="2" checked>
+    {%  else %}
+    <input type="radio" name="mark" value="2">
+    {% endif %}
+    <p>Н</label>
+    {%  if mark['MARK'] == -1  %}
+    <input type="radio" name="mark" value="-1" checked>
+    {%  else %}
+    <input type="radio" name="mark" value="-1">
+    {% endif %}
+    <p>П</label>
+    {%  if mark['MARK'] == -2  %}
+    <input type="radio" name="mark" value="-2" checked>
+    {%  else %}
+    <input type="radio" name="mark" value="-2">
+    {% endif %}
+    
+    </div>
+    <input type="text" name="comment">
+    <input type="submit" value="Подтвердить" id="submit">
+    
+    </form>
+    </div>
+
+
+
+</div>
+
+
+{% endblock %}

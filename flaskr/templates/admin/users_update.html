@@ -1,0 +1,35 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+
+<a href="{{  url_for('admin.users')}}">
+    Назад
+</a>
+
+<div style="height: 250px; width: 400px; border-color: black;">
+
+
+
+    <form method="POST"> 
+        <p>
+            Редактирование пользователя
+        </p>
+        
+    
+        <input type="text" name="username" value="{{user['USERNAME']}}" placeholder="username">
+        <input type="text" name="password" placeholder="пароль">
+
+    
+    <input id="submit" type="submit" value="Подтвердить">
+
+    
+    </form>
+    </div>
+
+
+
+
+
+
+{% endblock %}

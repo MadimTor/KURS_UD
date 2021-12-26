@@ -1,0 +1,49 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+<h1>
+    <a href="{{ url_for('admin.create_classes')}}">
+        Добавить
+    </a>
+    
+</h1>
+<a href="{{  url_for('admin.main')}}">
+    Назад
+</a>
+<table>
+<tr>
+    <td>
+        Номер
+    </td>
+    <td>
+        Литера
+    </td>
+    <td colspan="2">
+        Действия
+    </td>
+
+</tr>
+{%  for clas in classes  %}
+<tr>
+    <td>
+        {{clas['NUMBER']}}
+    </td>
+    <td>
+        {{clas['LITERA']}}
+    </td>
+    <td>
+        <a href="{{url_for('admin.update_classes', id = clas['ID'])}}">
+            Редактировать
+        </a>
+    </td>
+    <td>
+        <a href="{{url_for('admin.delete_classes', id = clas['ID'])}}">
+            Удалить
+        </a>
+    </td>
+</tr>
+
+{%  endfor  %}
+</table>
+
+{% endblock %}

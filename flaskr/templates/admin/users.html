@@ -1,0 +1,131 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+<a href="{{  url_for('admin.main')}}">
+    Назад
+</a>
+
+
+<div>
+    <h1>
+        Учителя
+    </h1>
+    <h1>
+        <a href="{{ url_for('admin.create_users', role = 2)}}">
+            Добавить
+        </a>
+        
+    </h1>
+    <table>
+    <tr>
+        <td>
+            Username
+        </td>
+    
+        <td>
+            Фамилия
+        </td>
+        <td>
+            Имя
+        </td>
+        <td>
+            Отчество
+        </td>
+        <td colspan="2">
+            Действия
+        </td>
+    
+    </tr>
+    {% for usr in users_te %}
+    <tr>
+        <td>
+            {{usr['USERNAME']}}
+        </td>
+        <td>
+            {{usr['SECOND_NAME']}}
+        </td>
+        <td>
+            {{usr['FIRST_NAME']}}
+        </td>
+        <td>
+            {{usr['FATHER_NAME']}}
+        </td>
+        <td>
+            <a href="{{url_for('admin.update_users', id = usr['ID'])}}">
+                Редактировать
+            </a>
+        </td>
+        <td>
+            <a href="{{url_for('admin.delete_users', id = usr['ID'])}}">
+                Удалить
+            </a>
+        </td>
+    </tr>
+    {%  endfor  %}
+    </table>
+</div>
+
+
+
+<div>
+    <h1>
+        Ученики
+    </h1>
+    <h1>
+        <a href="{{ url_for('admin.create_users', role = 1)}}">
+            Добавить
+        </a>
+        
+    </h1>
+    <table>
+    <tr>
+        <td>
+            Username
+        </td>
+    
+        <td>
+            Фамилия
+        </td>
+        <td>
+            Имя
+        </td>
+        <td>
+            Отчество
+        </td>
+
+        <td colspan="2">
+            Действия
+        </td>
+    
+    </tr>
+    {% for usr in users_st %}
+    <tr>
+        <td>
+            {{usr['USERNAME']}}
+        </td>
+        <td>
+            {{usr['SECOND_NAME']}}
+        </td>
+        <td>
+            {{usr['FIRST_NAME']}}
+        </td>
+        <td>
+            {{usr['FATHER_NAME']}}
+        </td>
+        <td>
+            <a href="{{url_for('admin.update_users', id = usr['ID'])}}">
+                Редактировать
+            </a>
+        </td>
+        <td>
+            <a href="{{url_for('admin.delete_users', id = usr['ID'])}}">
+                Удалить
+            </a>
+        </td>
+    </tr>
+    {%  endfor  %}
+    </table>
+</div>
+
+{% endblock %}

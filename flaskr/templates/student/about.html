@@ -1,0 +1,147 @@
+{% extends 'student_base.html' %}
+
+{% block content %}
+<div style="display: block;">
+<div class="info" style="width: 100%;">
+
+    <p style="font-size: 24px; padding-left: 20px;" >
+        {{ stud['FIRST_NAME'] }} {{ stud['SECOND_NAME'] }} {{ stud['FATHER_NAME'] }}
+    </p>
+
+</div>
+
+
+<div style="display: flex; padding: 20px;">
+
+<div class="big-table" style="margin: 0%;">
+
+<table style="position: fixed;">
+    <td style="height: 18px; background-color: #E7FFF9;"></td>
+    {% for items in subj %}
+    <tr>
+        
+        <td style="background-color: #E7FFF9;">{{items[0]}}</td>
+        
+     </tr>
+    {% endfor %}
+
+
+</table>
+
+
+
+<table>
+
+
+<tr>
+    <td></td>
+    {% for i in datas %}
+    <td>{{i.strftime("%d.%m")}}</td>
+    {% endfor %}
+</tr>
+
+
+
+{% for items in subj %}
+<tr>
+    
+    <td>{{items[0]}}</td>
+    {% for i in datas %}
+
+    {% set ch = namespace(check = 1) %}
+    
+
+        {% for mark in marks %}
+            {% if mark[1] == items[0] and mark[2].day == i.day and mark[2].month == i.month and mark[2].year == i.year %}
+                
+                <td onclick='tdclick()'>
+                    {% if mark[0] == 5 %}
+                    {% set ch.check = 0 %}
+                    <a href="{{mark[3]}}">5</a>
+                    {% elif mark[0] == 4 %}
+                    {% set ch.check = 0 %}
+                    <a href="{{mark[3]}}">4</a>
+                    {% elif mark[0] == 3 %}
+                    {% set ch.check = 0 %}
+                    <a href="{{mark[3]}}">3</a>
+                    {% elif mark[0] == 2 %}
+                    {% set ch.check = 0 %}
+                    <a href="{{mark[3]}}">2</a>
+                    {% elif mark[0] == -1 %}
+                    {% set ch.check = 0 %}
+                    <a href="{{mark[3]}}">Н</a>
+                    {% elif mark[0] == -2 %}
+                    {% set ch.check = 0 %}
+                    <a href="{{mark[3]}}">Н</a>
+                    {% endif %}
+
+                </td>
+                
+
+            {% endif %}
+
+        {% endfor %}
+        {% if ch.check == 1 %}
+            <td onclick='tdclick()'>
+
+            </td>
+        {% endif %}
+    {% endfor %}
+
+
+
+
+
+ </tr>
+{% endfor %}
+
+
+</table>
+
+</div>
+<div style="margin-left: 20px; display: block;background-color: #006C51 ;padding: 10px;height: 100%; width: 400px; border: 2px solid; border-radius: 15px;">
+    
+    <h3 style="color: white; margin: 0%; width: 100%;">
+        История оценок
+    </h3>
+    <div style="overflow-y: auto; overflow-x: hidden;height: 210px;">
+    {%for mrk in marks %}
+    <div style="border-radius: 5px; padding:2px; background-color: #E7FFF9; display: block; border: solid; padding: 3px; margin: 4px;">
+    <p style="width: 100%; margin: 0%;">Предмет: {{mrk[1]}}</p>
+    
+    <p style="width: 100%; margin: 0%;">Дата: {{mrk[2].strftime("%d.%m")}}</p>
+    <p style="width: 100%; margin: 0%;">Оценка: {{mrk[0]}}</p>
+    </div>
+    {%endfor%}
+    </div>
+    
+    </form>
+    </div>
+</div>
+
+
+
+
+{% if mark %}
+<div style=" display: block;background-color: #006C51 ;padding: 10px;height: 120px; width: 1625px; border: 2px solid; border-radius: 15px; margin: 20px;">
+    
+    <h3 style="color: white; margin: 0%; width: 100%;">
+        Информация об оценке
+    </h3>
+    <div style="overflow-y: auto; overflow-x: hidden;height: 80%; width: 100%;">
+    
+    <div style="border-radius: 5px; padding:2px; background-color: #E7FFF9; display: block; border: solid; padding: 3px; margin: 4px;">
+    <p style="width: 100%; margin: 0%;">Предмет: {{mark['NAME']}}</p>
+    
+    <p style="width: 100%; margin: 0%;">Дата: {{mark['DATE_MARK'].strftime("%d.%m")}}</p>
+    <p style="width: 100%; margin: 0%;">Оценка: {{mark['MARK']}}</p>
+    <p style="width: 100%; margin: 0%;">Комментарий: {{mark['COMMENT_FOR_MARK']}}</p>
+    </div>
+    
+    </div>
+    
+    </form>
+    </div>
+</div>
+{%endif%}
+{% endblock %}

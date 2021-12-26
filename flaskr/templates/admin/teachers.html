@@ -1,0 +1,56 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+<h1>
+    <a href="{{ url_for('admin.create_teacher')}}">
+        Добавить
+    </a>
+    
+</h1>
+<a href="{{  url_for('admin.main')}}">
+    Назад
+</a>
+<table>
+<tr>
+    <td>
+        Имя
+    </td>
+    <td>
+        Фамилия
+    </td>
+    <td>
+        Отчество
+    </td>
+    <td colspan="2">
+        Действия
+    </td>
+
+</tr>
+{%  for teach in teacher  %}
+<tr>
+    <td>
+        {{teach['FIRST_NAME']}}
+    </td>
+    <td>
+        {{teach['SECOND_NAME']}}
+    </td>
+    <td>
+        {{teach['FATHER_NAME']}}
+    </td>
+
+    <td>
+        <a href="{{url_for('admin.update_teacher', id = teach['ID'])}}">
+            Редактировать
+        </a>
+    </td>
+    <td>
+        <a href="{{url_for('admin.delete_teacher', id = teach['ID'])}}">
+            Удалить
+        </a>
+    </td>
+</tr>
+
+{%  endfor  %}
+</table>
+
+{% endblock %}

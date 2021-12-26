@@ -1,0 +1,52 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+
+<a href="{{  url_for('admin.students')}}">
+    Назад
+</a>
+
+<div style="height: 250px; width: 400px; border-color: black;">
+
+
+
+    <form method="POST"> 
+        <p>
+            Редактирование информации об ученике
+        </p>
+        
+    
+        <input type="text" name="first_name" required placeholder="Имя" value="{{student['FIRST_NAME']}}">
+        <input type="text" name="second_name" required placeholder="Фамилия" value="{{student['SECOND_NAME']}}">
+        <input type="text" name="father_name" required placeholder="Отчество" value="{{student['FATHER_NAME']}}">
+
+
+    <select name="clid">
+        <option value=""> Нет класса</option>
+        {% for cl in cls %}
+        {% if cl['ID'] == student['GROUP_ID'] %}
+        <option value="{{cl['ID']}}" selected>
+            {{cl['NUMBER']}}{{cl['LITERA']}}
+        </option>
+        {%else%}
+        <option value="{{cl['ID']}}">
+            {{cl['NUMBER']}}{{cl['LITERA']}}
+        </option>
+        {%endif%}
+        {% endfor %}
+    </select>
+
+    
+    <input id="submit" type="submit" value="Подтвердить">
+
+    
+    </form>
+    </div>
+
+
+
+
+
+
+{% endblock %}

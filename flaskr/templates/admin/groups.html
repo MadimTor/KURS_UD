@@ -1,0 +1,65 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+<h1>
+    <a href="{{ url_for('admin.create_groups')}}">
+        Добавить
+    </a>
+    
+</h1>
+<a href="{{  url_for('admin.main')}}">
+    Назад
+</a>
+<table>
+<tr>
+    <td>
+        ID
+    </td>
+
+    <td>
+        Текущий класс
+    </td>
+    <td>
+        Дата поступления
+    </td>
+    <td colspan="2">
+        Действия
+    </td>
+
+</tr>
+{% for group in groups %}
+<tr>
+    <td>
+        {{group['ID']}}
+    </td>
+    {% if group['CLSS_ID']%}
+    {% for cl in cls %}
+    {% if group['CLSS_ID'] == cl['ID']%}
+    <td>
+        {{cl['NUMBER']}}{{cl['LITERA']}}
+    </td>
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    <td>
+        Н/К
+    </td>
+    {% endif %}
+    <td>
+        {{group['START_DATE']}}
+    </td>
+    <td>
+        <a href="{{url_for('admin.update_groups', id = group['ID'])}}">
+            Редактировать
+        </a>
+    </td>
+    <td>
+        <a href="{{url_for('admin.delete_groups', id = group['ID'])}}">
+            Удалить
+        </a>
+    </td>
+</tr>
+{%  endfor  %}
+</table>
+
+{% endblock %}

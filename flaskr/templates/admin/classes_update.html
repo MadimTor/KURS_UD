@@ -1,0 +1,27 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+
+<a href="{{  url_for('admin.classes')}}">
+    Назад
+</a>
+
+<div style="height: 250px; width: 400px; border-color: black;">
+
+
+
+    <form method="POST"> 
+        <p>
+            Редактирование информации о классе
+        </p>
+        
+        <input type="number" min="1" max="11" name="num" required placeholder="Номер" value="{{clas['NUMBER']}}">
+        <input type="text" pattern="^[а-яА-Я]+$" maxlength="1" name="lit" required placeholder="Литера" value="{{clas['LITERA']}}">    
+
+    <input id="submit" type="submit" value="Подтвердить">
+    
+    </form>
+    </div>
+
+{% endblock %}

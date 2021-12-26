@@ -1,0 +1,56 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+<h1>
+    <a href="{{ url_for('admin.create_plan')}}">
+        Добавить
+    </a>
+    
+</h1>
+<a href="{{  url_for('admin.main')}}">
+    Назад
+</a>
+<table>
+<tr>
+    <td>
+        Предмет
+    </td>
+    <td>
+        Учитель
+    </td>
+    <td>
+        Класс
+    </td>
+
+    <td colspan="2">
+        Действия
+    </td>
+
+</tr>
+{% for pl in plan %}
+<tr>
+    <td>
+        {{pl['NAME']}}
+    </td>
+    <td>
+        {{pl['FIRST_NAME']}} {{pl['SECOND_NAME']}} {{pl['FATHER_NAME']}}
+    </td>
+    <td>
+        {{pl['NUMBER']}}{{pl['LITERA']}}
+    </td>
+
+    <td>
+        <a href="{{url_for('admin.update_plan', id = pl['ID'])}}">
+            Редактировать
+        </a>
+    </td>
+    <td>
+        <a href="{{url_for('admin.delete_plan', id = pl['ID'])}}">
+            Удалить
+        </a>
+    </td>
+</tr>
+{%  endfor  %}
+</table>
+
+{% endblock %}

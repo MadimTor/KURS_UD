@@ -1,0 +1,33 @@
+{% extends 'teacher_base.html' %}
+
+{% block content %}
+
+<div class="info" style="width: 100%;">
+
+    <p style="font-size: 36px; padding-left: 20px;" >
+        {{ info['FIRST_NAME'] }} {{ info['SECOND_NAME'] }} {{ info['FATHER_NAME'] }}
+    </p>
+
+</div>
+
+<div style="margin: 20px; display: block;">
+{% for i in subs %}
+<p style="font-size: 20px; width: 100%; margin: 0%;">
+<a >
+    {{i[0]}}
+    {% for j in classes %}
+    
+    {% if i[1] == j['ID'] %}
+    <p style="margin-left: 20px; font-size: 20px;">
+        <a href="{{ url_for('teacher.subj', id = j['P_ID']) }}">
+            {{j['NUMBER']}}{{j['LITERA']}}
+        </a>
+    </p>
+    {% endif %}
+    {% endfor %}
+</a>    
+</p>
+{% endfor %}
+</div>
+
+{% endblock %}

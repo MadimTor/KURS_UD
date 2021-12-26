@@ -1,0 +1,36 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+
+<a href="{{  url_for('admin.teachers')}}">
+    Назад
+</a>
+
+<div style="height: 250px; width: 400px; border-color: black;">
+
+
+
+    <form method="POST"> 
+        <p>
+            Добавление учителя
+        </p>
+        
+    
+    <input type="text" name="first_name" required placeholder="Имя">
+    <input type="text" name="second_name" required placeholder="Фамилия">
+    <input type="text" name="father_name" required placeholder="Отчество">
+
+    
+    <input id="submit" type="submit" value="Подтвердить">
+
+    
+    </form>
+    </div>
+
+
+
+
+
+
+{% endblock %}

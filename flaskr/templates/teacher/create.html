@@ -1,0 +1,51 @@
+{% extends 'teacher_base.html' %}
+
+{% block content %}
+
+<div style="margin: 20px;"> 
+<a href="{{  url_for('teacher.subj', id = sub['ID'])}}">
+    Назад
+</a>
+
+<div style="height: 250px; width: 400px; border-color: black;">
+
+
+
+    <form method="POST"> 
+        <p>
+            Предмет: {{sub['NAME']}}
+        </p>
+        <p>
+            Ученик: {{student['FIRST_NAME']}} {{student['SECOND_NAME']}}
+        </p>
+        <p>
+            Дата: {{date}}
+        </p>
+
+    <div>
+    <p>5 <input style="padding-bottom: 10px;" type="radio" name="mark" value="5" checked></p>
+    
+    <p>4 <input type="radio" name="mark" value="4"></p>
+    
+    <p>3 <input type="radio" name="mark" value="3"></label>
+    
+    <p>2 <input type="radio" name="mark" value="2"></label>
+    
+    <p>Н <input type="radio" name="mark" value="-1"></label>
+    
+    <p>П <input type="radio" name="mark" value="-2"></label>
+    
+    
+    </div>
+    <input type="text" name="comment">
+    <input type="submit" value="Подтвердить" id="submit">
+    
+    </form>
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}

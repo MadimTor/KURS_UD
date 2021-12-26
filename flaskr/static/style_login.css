@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Podkova&display=swap');
+html { font-family: Podkova; background: #E7FFF9; padding: 1rem; }
+body {
+    display: block;
+    margin: auto;
+    margin-top: 4%;
+    width: 461px;
+    height: 713px;
+    left: 730px;
+    top: 183px;
+    
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 8px;}
+
+h1 {
+    display: block;
+    margin: auto;
+    margin-top: 4%;
+    margin-bottom: 40%;
+width: 281px;
+height: 91px;
+left: 820px;
+top: 199px;
+
+font-family: Podkova;
+font-style: normal;
+font-weight: normal;
+font-size: 36px;
+line-height: 40px;
+text-align: center;
+
+color: #000000;
+
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+label {
+    display: block;
+    margin: auto;
+    margin-bottom: 5%;
+width: 319px;
+height: 32px;
+left: 813px;
+top: 451px;
+
+font-family: Podkova;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 27px;
+
+color: rgba(0, 0, 0, 0.4);
+}
+
+input{
+    
+    display: block;
+    margin: auto;
+    width: 321px;
+    height: 52px;
+    left: 813px;
+    top: 807px;
+    font-family: Podkova;
+    font-family: Podkova;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    background-color: #0000;
+    border: #0000;
+    border-bottom: 2px solid #000000;
+    
+;
+    
+}
+
+.flash { margin: auto!; padding: 1em; background: #cae6f6; border: 1px solid #377ba8; }
